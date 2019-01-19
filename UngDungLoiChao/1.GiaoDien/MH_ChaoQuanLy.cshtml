@@ -1,0 +1,63 @@
+﻿@{
+    var DanhSachQuanLy = XL_LUUTRU.DocDanhSachQuanLy();
+    var DanhSachNhanVien = XL_LUUTRU.DocDanhSachNhanVien();
+    string TenDangNhap = "";
+    string MatKhau = "";
+    string LoiChao = "";
+    string chuoiHTML = "";
+    if (IsPost)
+    {
+        TenDangNhap = Request["TenDangNhap"];
+        MatKhau = Request["MatKhau"];
+    }
+    var QuanLy = DanhSachQuanLy.FirstOrDefault(QL => QL.TenDangNhap == TenDangNhap && QL.MatKhau == MatKhau);
+    var HopLe = QuanLy != null;
+    if (HopLe)
+    {
+        QuanLy.DanhSachCacLanDangNhap.Add(DateTime.Now);
+        XL_LUUTRU.GhiQuanLy(QuanLy);
+        LoiChao = "<b> Trân trọng kính chào Quản lý </b>" + QuanLy.HoTen;
+        string chuoiHTML_LoiChao = "<div>" + LoiChao + "<br/>Số lần đăng nhập hiện nay là "
+            + QuanLy.DanhSachCacLanDangNhap.Count + "<br/> Số nhân viên hiện nay " + DanhSachNhanVien.Count +
+            "<br/> Chi tiết về các lần đăng nhập và Nhân viên xin hẹn phiên bản sau" +
+            " <br/> Đây là ứng dụng Web <b> dành riêng Xử lý Lưu trữ </b> của tôi";
+        string chuoiHTML_HinhAnh = "<img src='../Media/" + TenDangNhap + ".png' width='150' height='200'> <br/>";
+        chuoiHTML = chuoiHTML_HinhAnh + chuoiHTML_LoiChao;
+    }
+    else
+    {
+        chuoiHTML = "<div>" + "Xin vui lòng Nhập Tên đăng nhập và Mật khẩu"
+            + "<br/> Click đồng ý => Nếu hợp lệ Ứng dụng sẽ chào anh/chị"
+            + "<div>";
+    }
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+
+</head>
+
+<body style="font-family:Arial">
+    <form method="post">
+        <div class="container-fluid">
+            <div>
+                <input type="text" name="TenDangNhap" placeholder="Tên Đăng Nhập" required id="@TenDangNhap"> <br /><br />
+                <input type="password" name="MatKhau" placeholder="Mật khẩu" required id="@MatKhau"><br /><br />
+                <button class="btn btn-danger" type="submit">Đồng ý</button>
+            </div>
+
+            @Html.Raw(chuoiHTML)
+
+        </div>
+    </form>
+</body>
+</html>
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+

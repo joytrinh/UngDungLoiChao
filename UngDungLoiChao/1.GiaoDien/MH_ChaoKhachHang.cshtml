@@ -1,0 +1,52 @@
+﻿@{
+    var DanhSachNhomHang = XL_LUUTRU.DocDanhSachNhomHang();
+    string LoiChao = "";
+    string HoTen = "";
+    string chuoiHTML = "";
+    if (IsPost)
+    {
+        HoTen = Request["HoTen"];
+        var HopLe = HoTen.Trim();
+        if (HopLe != null)
+        {
+            var BoPhatSinh = new Random();
+            var n = BoPhatSinh.Next(0, 3);
+            LoiChao = "Xin chào " + HoTen;
+            string chuoiHTML_HinhAnh = "<img src='../Media/KHACH_HANG_" + n + ".png' width='150' height='150'> <br/>";
+            string chuoiHTML_LoiChao = "<div class='btn'>" + LoiChao + "<br/> Hiện nay chúng tôi có " + DanhSachNhomHang.Count +
+        " Nhóm hàng <br/> Chi tiết về các nhóm hàng xin hẹn phiên bản sau <br/> " +
+        "Đây là ứng dụng Web <b> dành riêng cho Xử lý Lưu Trữ </b> của tôi";
+            chuoiHTML = chuoiHTML_HinhAnh + chuoiHTML_LoiChao;
+        }
+        else
+        {
+            chuoiHTML = "<div>" + "Xin vui lòng Nhập Họ tên khác trống" + "<br/> Click đồng ý => Nếu hợp lệ ứng dụng sẽ chào anh/chị" + "<div>";//Xử lý giao diện: kết xuất chuỗi HTML
+        }
+    }
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+
+</head>
+
+<body style="font-family:Arial">
+    <form method="post">
+        <div class="container-fluid">
+            <div>
+                <input type="text" name="HoTen" placeholder="Vui lòng nhập họ tên" required />
+                <button class="btn btn-danger" type="submit">Đồng ý</button>
+            </div>
+            @Html.Raw(chuoiHTML)
+        </div>
+    </form>
+</body>
+</html>
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script> 
