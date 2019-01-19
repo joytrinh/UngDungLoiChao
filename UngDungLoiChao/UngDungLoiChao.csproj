@@ -124,6 +124,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="2.XuLy\XL_LUUTRU.cs" />
+    <Compile Include="2.XuLy\XL_NGHIEPVU.cs" />
     <Compile Include="2.XuLy\XL_NHANVIEN.cs" />
     <Compile Include="2.XuLy\XL_NHOMHANG.cs" />
     <Compile Include="2.XuLy\XL_QUANLY.cs" />

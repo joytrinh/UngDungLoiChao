@@ -11,12 +11,17 @@
         {
             var BoPhatSinh = new Random();
             var n = BoPhatSinh.Next(0, 3);
-            LoiChao = "Xin chào " + HoTen;
+            LoiChao = XL_NGHIEPVU.TaoLoiChaoKhachHang(HoTen);
             string chuoiHTML_HinhAnh = "<img src='../Media/KHACH_HANG_" + n + ".png' width='150' height='150'> <br/>";
-            string chuoiHTML_LoiChao = "<div class='btn'>" + LoiChao + "<br/> Hiện nay chúng tôi có " + DanhSachNhomHang.Count +
-        " Nhóm hàng <br/> Chi tiết về các nhóm hàng xin hẹn phiên bản sau <br/> " +
-        "Đây là ứng dụng Web <b> dành riêng cho Xử lý Lưu Trữ </b> của tôi";
-            chuoiHTML = chuoiHTML_HinhAnh + chuoiHTML_LoiChao;
+            string chuoiHTML_LoiChao = "<div class='btn'> " + LoiChao + "<br/> Đây là Ứ ng dụng Web <b>dành riêng cho Xử lý nghiệp vụ</b> của tôi <br/>";
+            string chuoiHTML_DanhSachNhomHang = "<div class='btn'> Danh sách các Nhóm hàng hiện nay";
+            DanhSachNhomHang.ForEach(NhomHang =>
+            {
+                chuoiHTML_DanhSachNhomHang += "<div class='btn'> <img src='../Media/"
+                + NhomHang.MaSo + ".png' width='50' height='50'>" + "<br/> " + NhomHang.Ten + "</div>";
+            });
+            chuoiHTML_DanhSachNhomHang += "</div>";
+            chuoiHTML = chuoiHTML_HinhAnh + chuoiHTML_LoiChao + chuoiHTML_DanhSachNhomHang;
         }
         else
         {

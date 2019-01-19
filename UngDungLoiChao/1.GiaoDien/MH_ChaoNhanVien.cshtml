@@ -15,13 +15,13 @@
     {
         NhanVien.DanhSachCacLanDangNhap.Add(DateTime.Now);
         XL_LUUTRU.GhiNhanVien(NhanVien);
-        LoiChao = "Xin chào Nhân viên " + NhanVien.HoTen;
+        LoiChao = XL_NGHIEPVU.TaoLoiChaoNhanVien(NhanVien);
         string chuoiHTML_LoiChao = "<div>" + LoiChao + "<br/>Số lần đăng nhập hiện nay là "
-            + NhanVien.DanhSachCacLanDangNhap.Count + "<br/> Anh Chị đã được phân công "
-            + NhanVien.DanhSachMaSoNhomHang.Count +
-            " Nhóm hàng <br/> Chi tiết về các lần đăng nhập và Nhóm hàng " +
-            "xin hẹn phiên bản sau <br/> Đây là ứng dụng Web " +
-            "<b> dành riêng Xử lý Lưu trữ </b> của tôi";
+    + NhanVien.DanhSachCacLanDangNhap.Count + "<br/> Anh Chị đã được phân công "
+    + NhanVien.DanhSachMaSoNhomHang.Count +
+    " Nhóm hàng <br/> Chi tiết về các lần đăng nhập và Nhóm hàng " +
+    "xin hẹn phiên bản sau <br/> Đây là ứng dụng Web " +
+    "<b> dành riêng Xử lý Lưu trữ </b> của tôi";
         string chuoiHTML_HinhAnh = "<img src='../Media/" + TenDangNhap + ".png' width='150' height='200'> <br/>";
         chuoiHTML = chuoiHTML_HinhAnh + chuoiHTML_LoiChao;
     }
