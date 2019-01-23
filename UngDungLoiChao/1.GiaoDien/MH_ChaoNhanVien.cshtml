@@ -3,7 +3,7 @@
     var DanhSachNhomHang = XL_LUUTRU.DocDanhSachNhomHang();
     string TenDangNhap = "";
     string MatKhau = "";
-    string LoiChao = "";
+    //string LoiChao = "";
     string chuoiHTML = "";
     if (IsPost)
     {
@@ -16,25 +16,12 @@
     {
         NhanVien.DanhSachCacLanDangNhap.Add(DateTime.Now);
         XL_LUUTRU.GhiNhanVien(NhanVien);
-        LoiChao = XL_NGHIEPVU.TaoLoiChaoNhanVien(NhanVien);
         var DanhSachNhomHangDuocPhanCong = XL_NGHIEPVU.TaoDanhSachNhomHang(NhanVien,DanhSachNhomHang);
-        string chuoiHTML_LoiChao = "<div>" + LoiChao + "<br/> Anh Chị đã được phân công "
-    + NhanVien.DanhSachMaSoNhomHang.Count + "<br/> Đây là Ứng dụng Web <b>dành riêng cho Xử lý nghiệp vụ</b> của tôi <br/>";
-        string chuoiHTML_HinhAnh = "<img src='../Media/" + TenDangNhap + ".png' width='150' height='200'> <br/>";
-        string chuoiHTML_DanhSachNhomHangDuocPhanCong = "<div class='btn'> Danh sách các Nhóm hàng được phân công <br/>";
-        DanhSachNhomHangDuocPhanCong.ForEach(NhomHang =>
-        {
-            chuoiHTML_DanhSachNhomHangDuocPhanCong += "<div class='btn'> <img src='../Media/"
-            + NhomHang.MaSo + ".png' width='50' height='50'>" + "<br/> " + NhomHang.Ten + "</div> <br/>";
-        });
-        chuoiHTML_DanhSachNhomHangDuocPhanCong += "</div>";
-        string chuoiHTML_CacLanDangNhap = "<br/><div>Danh sách các lần đăng nhập";
-        NhanVien.DanhSachCacLanDangNhap.ForEach(ngay =>
-        {
-            chuoiHTML_CacLanDangNhap += "<br/>" + ngay.ToString();
-        });
-        chuoiHTML_CacLanDangNhap += "</div>";
-        chuoiHTML = chuoiHTML_HinhAnh + chuoiHTML_LoiChao + chuoiHTML_DanhSachNhomHangDuocPhanCong + chuoiHTML_CacLanDangNhap;
+        string chuoiHTML_NhanVien = XL_THEHIEN.TaoChuoiHTMLNhanVien(NhanVien);
+        string chuoiHTML_DanhSachNhomHang = XL_THEHIEN.TaoChuoiHTMLDanhSachNhomHang(DanhSachNhomHangDuocPhanCong);
+        string chuoiHTML_CacLanDangNhap = XL_THEHIEN.TaoChuoiHTMLCacLanDangNhap(NhanVien);
+
+        chuoiHTML = chuoiHTML_NhanVien + chuoiHTML_DanhSachNhomHang + chuoiHTML_CacLanDangNhap;
     }
     else
     {

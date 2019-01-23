@@ -17,17 +17,6 @@ public class XL_THEHIEN
             "<div class='btn'> Danh sách các Nhóm hàng hiện nay <br/>";
         return chuoiHTML;
     }
-    public static string TaoChuoiHTMLDanhSachNhomHang(List<XL_NHOMHANG> DanhSachNhomHang)
-    {
-        string chuoiHTML = "<div class='btn'>";
-        DanhSachNhomHang.ForEach(NhomHang =>
-        {
-            string chuoiHinh = "<div class='btn'> <img src='../Media/" + NhomHang.MaSo + ".png' width='50' height='50'>";
-            string chuoiThongTin = "<br/><div>" + NhomHang.Ten + "</div>";
-            chuoiHTML += $"{chuoiHinh}" + $"{chuoiThongTin}" + "<br />";
-        });
-        return chuoiHTML;
-    }
     public static string TaoChuoiHTMLKhachHang(XL_KhachHang KhachHang)
     {
         string chuoiHinh = "<img src='../Media/KHACH_HANG_" + XL_NGHIEPVU.PhatSinh(4) + ".png' width='150' height='150'> <br/>";
@@ -36,5 +25,38 @@ public class XL_THEHIEN
             "<br/>Đây là Ứng dụng Web<b> dành riêng cho Xử lý thể hiện</b> của tôi </div><br/>" +
             "<div class='btn'> Danh sách các Nhóm hàng hiện nay <br/>";
         return chuoiHTML;
+    }
+    public static string TaoChuoiHTMLNhanVien(XL_NHANVIEN NhanVien)
+    {
+        string chuoiHinh = "<img src='../Media/" + NhanVien.MaSo + ".png' width='150' height='150'> <br/>";
+        string chuoiThongTin = XL_NGHIEPVU.TaoLoiChaoNhanVien(NhanVien);
+        string chuoiHTML = "<div class='btn'>" + $"{chuoiHinh}" + $"{chuoiThongTin}" +
+            "<br/>Đây là Ứng dụng Web<b> dành riêng cho Xử lý thể hiện</b> của tôi<br/>" +
+            "Anh Chị đã được phân công " + NhanVien.DanhSachMaSoNhomHang.Count + " Nhóm hàng</div><br/>";
+        return chuoiHTML;
+    }
+
+    //Tao chuoi HTML Danh sach doi tuong
+    public static string TaoChuoiHTMLDanhSachNhomHang(List<XL_NHOMHANG> DanhSachNhomHang)
+    {
+        string TieuDe = $"<div class='btn'> Danh sách {DanhSachNhomHang.Count} Nhóm hàng<div><br/>";
+        string chuoiHTML = "<div class='btn'>";
+        DanhSachNhomHang.ForEach(NhomHang =>
+        {
+            string chuoiHinh = "<div class='btn'> <img src='../Media/" + NhomHang.MaSo + ".png' width='50' height='50'>";
+            string chuoiThongTin = "<br/><div>" + NhomHang.Ten + "</div>";
+            chuoiHTML += $"{chuoiHinh}" + $"{chuoiThongTin}" + "<br />";
+        });
+        return TieuDe + chuoiHTML;
+    }
+    public static string TaoChuoiHTMLCacLanDangNhap(XL_NHANVIEN NhanVien)
+    {
+        string chuoiHTML_CacLanDangNhap = "<br/><div>Danh sách các lần đăng nhập";
+        NhanVien.DanhSachCacLanDangNhap.ForEach(ngay =>
+        {
+            chuoiHTML_CacLanDangNhap += "<br/>" + ngay.ToString();
+        });
+        chuoiHTML_CacLanDangNhap += "</div>";
+        return chuoiHTML_CacLanDangNhap;
     }
 }
