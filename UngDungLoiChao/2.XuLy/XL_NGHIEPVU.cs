@@ -33,14 +33,9 @@ public class XL_NGHIEPVU
         });
         return DanhSach;
     }
-    public static List<XL_NHANVIEN> TaoDanhSachNhanVien(XL_QUANLY QL, List<XL_NHANVIEN> DanhSachNhanVien)
+    public static int PhatSinh(int n)
     {
-        List<XL_NHANVIEN> DanhSach = new List<XL_NHANVIEN>();
-        .ForEach(NVNH =>
-        {
-            var NhomHang = DanhSachNhomHang.FirstOrDefault(NH => NH.MaSo == NVNH);
-            DanhSach.Add(NhomHang);
-        });
-        return DanhSach;
+        var BoPhatSinh = new Random();
+        return BoPhatSinh.Next(0, n);
     }
 }

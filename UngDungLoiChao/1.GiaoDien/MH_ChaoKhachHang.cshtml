@@ -1,27 +1,33 @@
 ﻿@{
     var DanhSachNhomHang = XL_LUUTRU.DocDanhSachNhomHang();
-    string LoiChao = "";
-    string HoTen = "";
+
+    var KhachHang = new XL_KhachHang();//Bien nhap lieu + ket qua
+    //string LoiChao = "";
+    //string HoTen = "";
     string chuoiHTML = "";
     if (IsPost)
     {
-        HoTen = Request["HoTen"];
-        var HopLe = HoTen.Trim();
-        if (HopLe != null)
+        KhachHang.HoTen = Request["HoTen"];
+        var HopLe = KhachHang.HoTen.Trim() != null;
+        if (HopLe)
         {
-            var BoPhatSinh = new Random();
-            var n = BoPhatSinh.Next(0, 3);
-            LoiChao = XL_NGHIEPVU.TaoLoiChaoKhachHang(HoTen);
-            string chuoiHTML_HinhAnh = "<img src='../Media/KHACH_HANG_" + n + ".png' width='150' height='150'> <br/>";
-            string chuoiHTML_LoiChao = "<div class='btn'> " + LoiChao + "<br/> Đây là Ứng dụng Web <b>dành riêng cho Xử lý nghiệp vụ</b> của tôi <br/>";
-            string chuoiHTML_DanhSachNhomHang = "<div class='btn'> Danh sách các Nhóm hàng hiện nay";
-            DanhSachNhomHang.ForEach(NhomHang =>
-            {
-                chuoiHTML_DanhSachNhomHang += "<div class='btn'> <img src='../Media/"
-                + NhomHang.MaSo + ".png' width='50' height='50'>" + "<br/> " + NhomHang.Ten + "</div>";
-            });
-            chuoiHTML_DanhSachNhomHang += "</div>";
-            chuoiHTML = chuoiHTML_HinhAnh + chuoiHTML_LoiChao + chuoiHTML_DanhSachNhomHang;
+            //Xu ly giao dien: tao chuoi HTML
+            //var BoPhatSinh = new Random();
+            //var n = BoPhatSinh.Next(0, 3);
+            //LoiChao = XL_NGHIEPVU.TaoLoiChaoKhachHang(HoTen);
+            //string chuoiHTML_HinhAnh = "<img src='../Media/KHACH_HANG_" + n + ".png' width='150' height='150'> <br/>";
+            var chuoiHTML_KhachHang = XL_THEHIEN.TaoChuoiHTMLKhachHang;
+            string chuoiHTML_DanhSachNhomHang = XL_THEHIEN.TaoChuoiHTMLDanhSachNhomHang;
+            chuoiHTML = chuoiHTML_KhachHang + chuoiHTML_DanhSachNhomHang;
+
+            //string chuoiHTML_LoiChao = "<div class='btn'> " + LoiChao + "<br/> Đây là Ứng dụng Web <b>dành riêng cho Xử lý nghiệp vụ</b> của tôi <br/>";
+            //string chuoiHTML_DanhSachNhomHang = "<div class='btn'> Danh sách các Nhóm hàng hiện nay";
+            //DanhSachNhomHang.ForEach(NhomHang =>
+            //{
+            //    chuoiHTML_DanhSachNhomHang += "<div class='btn'> <img src='../Media/"
+            //    + NhomHang.MaSo + ".png' width='50' height='50'>" + "<br/> " + NhomHang.Ten + "</div>";
+            //});
+            //chuoiHTML_DanhSachNhomHang += "</div>";
         }
         else
         {

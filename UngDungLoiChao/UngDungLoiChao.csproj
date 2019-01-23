@@ -104,7 +104,7 @@
     <Content Include="Media\KHACH_HANG_1.png" />
     <Content Include="Media\KHACH_HANG_2.png" />
     <Content Include="Media\Khach_hang_3.png" />
-    <Content Include="Media\Khach_Tham_quan_0.png" />
+    <Content Include="Media\Khach_tham_quan_0.png" />
     <Content Include="Media\Khach_tham_quan_1.png" />
     <Content Include="Media\Khach_tham_quan_2.png" />
     <Content Include="Media\Khach_tham_quan_3.png" />
@@ -124,11 +124,14 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="2.XuLy\XL_KhachHang.cs" />
+    <Compile Include="2.XuLy\XL_KhachThamQuan.cs" />
     <Compile Include="2.XuLy\XL_LUUTRU.cs" />
     <Compile Include="2.XuLy\XL_NGHIEPVU.cs" />
     <Compile Include="2.XuLy\XL_NHANVIEN.cs" />
     <Compile Include="2.XuLy\XL_NHOMHANG.cs" />
     <Compile Include="2.XuLy\XL_QUANLY.cs" />
+    <Compile Include="2.XuLy\XL_THEHIEN.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
