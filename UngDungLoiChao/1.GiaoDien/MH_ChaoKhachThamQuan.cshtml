@@ -2,11 +2,10 @@
     var DanhSachNhomHang = XL_LUUTRU.DocDanhSachNhomHang();
     string chuoiHTML = "";
 
-    //Xu ly giao dien: Tạo chuối HTML
+    //Xu ly giao dien: Tao chuoi HTML
     var chuoiHTML_KhachThamQuan = XL_THEHIEN.TaoChuoiHTMLKhachThamQuan();
-    string chuoiHTML_LoiChao = "<div class='btn'> " + chuoiHTML_KhachThamQuan + "<br/> Đây là Ứng dụng Web <b>dành riêng cho Xử lý thể hiện</b> của tôi <br/>";
     string chuoiHTML_DanhSachNhomHang = XL_THEHIEN.TaoChuoiHTMLDanhSachNhomHang(DanhSachNhomHang);
-    chuoiHTML = chuoiHTML_LoiChao + chuoiHTML_DanhSachNhomHang;
+    chuoiHTML = chuoiHTML_KhachThamQuan + chuoiHTML_DanhSachNhomHang;
 }
 
 <!DOCTYPE html>

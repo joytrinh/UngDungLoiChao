@@ -12,7 +12,9 @@ public class XL_THEHIEN
     {
         string chuoiHinh = "<img src='../Media/Khach_tham_quan_" + XL_NGHIEPVU.PhatSinh(5) + ".png' width='150' height='150'> <br/>";
         string chuoiThongTin = XL_NGHIEPVU.TaoLoiChaoKhachThamQuan();
-        string chuoiHTML = "<div class='btn'>" + $"{chuoiHinh}" + $"{chuoiThongTin}" + "</div>";
+        string chuoiHTML = "<div class='btn'>" + $"{chuoiHinh}" + $"{chuoiThongTin}" + 
+            "<br/>Đây là Ứng dụng Web<b> dành riêng cho Xử lý thể hiện</b> của tôi </div><br/>" +
+            "<div class='btn'> Danh sách các Nhóm hàng hiện nay <br/>";
         return chuoiHTML;
     }
     public static string TaoChuoiHTMLDanhSachNhomHang(List<XL_NHOMHANG> DanhSachNhomHang)
@@ -26,8 +28,13 @@ public class XL_THEHIEN
         });
         return chuoiHTML;
     }
-    //public static string TaoChuoiHTMLKhachHang()
-    //{
-
-    //}
+    public static string TaoChuoiHTMLKhachHang(XL_KhachHang KhachHang)
+    {
+        string chuoiHinh = "<img src='../Media/KHACH_HANG_" + XL_NGHIEPVU.PhatSinh(4) + ".png' width='150' height='150'> <br/>";
+        string chuoiThongTin = XL_NGHIEPVU.TaoLoiChaoKhachHang(KhachHang.HoTen);
+        string chuoiHTML = "<div class='btn'>" + $"{chuoiHinh}" + $"{chuoiThongTin}" +
+            "<br/>Đây là Ứng dụng Web<b> dành riêng cho Xử lý thể hiện</b> của tôi </div><br/>" +
+            "<div class='btn'> Danh sách các Nhóm hàng hiện nay <br/>";
+        return chuoiHTML;
+    }
 }
