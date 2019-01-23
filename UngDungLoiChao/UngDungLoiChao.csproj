@@ -90,6 +90,7 @@
     <Content Include="1.GiaoDien\MH_ChaoKhachHang.cshtml" />
     <Content Include="1.GiaoDien\MH_ChaoNhanVien.cshtml" />
     <Content Include="1.GiaoDien\MH_ChaoQuanLy.cshtml" />
+    <Content Include="1.GiaoDien\MH_ChaoTuyChon.cshtml" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

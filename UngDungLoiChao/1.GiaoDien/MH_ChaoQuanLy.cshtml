@@ -16,13 +16,23 @@
     {
         QuanLy.DanhSachCacLanDangNhap.Add(DateTime.Now);
         XL_LUUTRU.GhiQuanLy(QuanLy);
-        LoiChao = "<b> Trân trọng kính chào Quản lý </b>" + QuanLy.HoTen;
-        string chuoiHTML_LoiChao = "<div>" + LoiChao + "<br/>Số lần đăng nhập hiện nay là "
-            + QuanLy.DanhSachCacLanDangNhap.Count + "<br/> Số nhân viên hiện nay " + DanhSachNhanVien.Count +
-            "<br/> Chi tiết về các lần đăng nhập và Nhân viên xin hẹn phiên bản sau" +
-            " <br/> Đây là ứng dụng Web <b> dành riêng Xử lý Lưu trữ </b> của tôi";
+        LoiChao = XL_NGHIEPVU.TaoLoiChaoQuanLy(QuanLy);
+        string chuoiHTML_LoiChao = "<div>" + LoiChao + "<br/> Đây là Ứng dụng Web <b>dành riêng cho Xử lý nghiệp vụ</b> của tôi <br/>";
         string chuoiHTML_HinhAnh = "<img src='../Media/" + TenDangNhap + ".png' width='150' height='200'> <br/>";
-        chuoiHTML = chuoiHTML_HinhAnh + chuoiHTML_LoiChao;
+        string chuoiHTML_DanhSachNhanVien = "<div class='btn'> Danh sách Nhân viên<br/>";
+        DanhSachNhanVien.ForEach(NhanVien =>
+        {
+            chuoiHTML_DanhSachNhanVien += "<div class='btn'> <img src='../Media/"
+            + NhanVien.MaSo + ".png' width='50' height='50'>" + "<br/> " + NhanVien.HoTen + "</div><br/>";
+        });
+        chuoiHTML_DanhSachNhanVien += "</div>";
+        string chuoiHTML_CacLanDangNhap = "<div>Danh sách các lần đăng nhập";
+        QuanLy.DanhSachCacLanDangNhap.ForEach(ngay =>
+        {
+            chuoiHTML_CacLanDangNhap += "<br/>" + ngay.ToString();
+        });
+        chuoiHTML_CacLanDangNhap += "</div>";
+        chuoiHTML = chuoiHTML_HinhAnh + chuoiHTML_LoiChao + chuoiHTML_DanhSachNhanVien + chuoiHTML_CacLanDangNhap;
     }
     else
     {

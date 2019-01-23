@@ -23,4 +23,24 @@ public class XL_NGHIEPVU
         return "Xin chào Quản lý " + QL.HoTen + "<br/>Số lần đăng nhập hiện nay là "
             + QL.DanhSachCacLanDangNhap.Count;
     }
+    public static List<XL_NHOMHANG> TaoDanhSachNhomHang(XL_NHANVIEN NV, List<XL_NHOMHANG> DanhSachNhomHang)
+    {
+        List<XL_NHOMHANG> DanhSach = new List<XL_NHOMHANG>();
+        NV.DanhSachMaSoNhomHang.ForEach(NVNH =>
+        {
+            var NhomHang = DanhSachNhomHang.FirstOrDefault(NH => NH.MaSo == NVNH);
+            DanhSach.Add(NhomHang);
+        });
+        return DanhSach;
+    }
+    public static List<XL_NHANVIEN> TaoDanhSachNhanVien(XL_QUANLY QL, List<XL_NHANVIEN> DanhSachNhanVien)
+    {
+        List<XL_NHANVIEN> DanhSach = new List<XL_NHANVIEN>();
+        .ForEach(NVNH =>
+        {
+            var NhomHang = DanhSachNhomHang.FirstOrDefault(NH => NH.MaSo == NVNH);
+            DanhSach.Add(NhomHang);
+        });
+        return DanhSach;
+    }
 }
