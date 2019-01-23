@@ -19,15 +19,12 @@
         var DanhSachNhomHangDuocPhanCong = XL_NGHIEPVU.TaoDanhSachNhomHang(NhanVien,DanhSachNhomHang);
         string chuoiHTML_NhanVien = XL_THEHIEN.TaoChuoiHTMLNhanVien(NhanVien);
         string chuoiHTML_DanhSachNhomHang = XL_THEHIEN.TaoChuoiHTMLDanhSachNhomHang(DanhSachNhomHangDuocPhanCong);
-        string chuoiHTML_CacLanDangNhap = XL_THEHIEN.TaoChuoiHTMLCacLanDangNhap(NhanVien);
-
+        string chuoiHTML_CacLanDangNhap = XL_THEHIEN.TaoChuoiHTMLCacLanDangNhap(NhanVien.DanhSachCacLanDangNhap);
         chuoiHTML = chuoiHTML_NhanVien + chuoiHTML_DanhSachNhomHang + chuoiHTML_CacLanDangNhap;
     }
     else
     {
-        chuoiHTML = "<div>" + "Xin vui lòng Nhập Tên đăng nhập và Mật khẩu"
-            + "<br/> Click đồng ý => Nếu hợp lệ Ứng dụng sẽ chào anh/chị"
-            + "<div>";
+        chuoiHTML = XL_THEHIEN.TaoChuoiHTMLThongBaoYeuCauDangNhap();
     }
 }
 

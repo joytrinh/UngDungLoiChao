@@ -3,7 +3,6 @@
     var DanhSachNhanVien = XL_LUUTRU.DocDanhSachNhanVien();
     string TenDangNhap = "";
     string MatKhau = "";
-    string LoiChao = "";
     string chuoiHTML = "";
     if (IsPost)
     {
@@ -16,29 +15,15 @@
     {
         QuanLy.DanhSachCacLanDangNhap.Add(DateTime.Now);
         XL_LUUTRU.GhiQuanLy(QuanLy);
-        LoiChao = XL_NGHIEPVU.TaoLoiChaoQuanLy(QuanLy);
-        string chuoiHTML_LoiChao = "<div>" + LoiChao + "<br/> Đây là Ứng dụng Web <b>dành riêng cho Xử lý nghiệp vụ</b> của tôi <br/>";
-        string chuoiHTML_HinhAnh = "<img src='../Media/" + TenDangNhap + ".png' width='150' height='200'> <br/>";
-        string chuoiHTML_DanhSachNhanVien = "<div class='btn'> Danh sách Nhân viên<br/>";
-        DanhSachNhanVien.ForEach(NhanVien =>
-        {
-            chuoiHTML_DanhSachNhanVien += "<div class='btn'> <img src='../Media/"
-            + NhanVien.MaSo + ".png' width='50' height='50'>" + "<br/> " + NhanVien.HoTen + "</div><br/>";
-        });
-        chuoiHTML_DanhSachNhanVien += "</div>";
-        string chuoiHTML_CacLanDangNhap = "<div>Danh sách các lần đăng nhập";
-        QuanLy.DanhSachCacLanDangNhap.ForEach(ngay =>
-        {
-            chuoiHTML_CacLanDangNhap += "<br/>" + ngay.ToString();
-        });
-        chuoiHTML_CacLanDangNhap += "</div>";
-        chuoiHTML = chuoiHTML_HinhAnh + chuoiHTML_LoiChao + chuoiHTML_DanhSachNhanVien + chuoiHTML_CacLanDangNhap;
+
+        string chuoiHTML_QuanLy = XL_THEHIEN.TaoChuoiHTMLQuanLy(QuanLy);
+        string chuoiHTML_DanhSachNhanVien = XL_THEHIEN.TaoChuoiHTMLDanhSachNhanVien(DanhSachNhanVien);
+        string chuoiHTML_CacLanDangNhap = XL_THEHIEN.TaoChuoiHTMLCacLanDangNhap(QuanLy.DanhSachCacLanDangNhap);
+        chuoiHTML = chuoiHTML_QuanLy + chuoiHTML_DanhSachNhanVien + chuoiHTML_CacLanDangNhap;
     }
     else
     {
-        chuoiHTML = "<div>" + "Xin vui lòng Nhập Tên đăng nhập và Mật khẩu"
-            + "<br/> Click đồng ý => Nếu hợp lệ Ứng dụng sẽ chào anh/chị"
-            + "<div>";
+        chuoiHTML = XL_THEHIEN.TaoChuoiHTMLThongBaoYeuCauDangNhap();
     }
 }
 
